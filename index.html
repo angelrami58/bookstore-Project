@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href = '/style.css' rel = 'stylesheet'> 
+    <link href = "/script.js" >
+    <title>Book Store</title>
+</head>
+<body>                                                                            
+    <header><h1>WELCOME TO MY BOOK STORE</h1></header>
+    <main>
+  
+      <aside>
+        <div class="genre">
+          <ul>
+              <h4>Genres of Books</h4>
+                  <li>Romance</li>
+                  <li>Thrillers</li>
+                  <li>Fiction</li>
+                  <li>Nonfiction</li>
+                  <li>Historical</li>
+          </ul>
+        </div>
+            <form id="myform">
+              <div id="filter" class="dropdown">
+                <label for="filter"></label>
+                    <div class="dropdown-content">  
+                        <label for="author" id="authorfilter">Author</label>
+                        <select name="author" id="authors"><option></option></select><br>
+                        <label for="publisher" id="publisherfilter">Publisher</label>
+                        <select name="publisher" id="publishers"><option></option></select><br>
+                        <label for="genre" id="genrefilter">Genre</label>
+                        <select name="genre" id="genres"><option></option></select><br>                                                               
+                    </div>
+              </div> 
+            </form>
+            <button id="input" onclick="bookInput()">filter</button>
+            <button type="reset" >Reset</button>
+      </aside>
+          <div id="content" class="content"></div>     
+    <script>
+      function wordPrint(e){
+    const array = [{test: "demo"}]
+  document.getElementById("content").innerHTML = array.map((i) => `<p>${i.test}</p>`).join(" ");
+  console.log(JSON.stringify(array))}
+  const bookList = [
+              { 
+              img:"/images/Images/47479711.jpeg",  
+              title: "Hunger Games ", 
+              genre: ' Fiction ', 
+              author: 'Suzanne Collins ', 
+              price: '20.00', 
+              date: '2008-09-14', 
+              publisher: 'Scholastic',  
+              bookId: 1 
+            },
+              {
+              img:"/images/Images/51mN3bY0JjL._SX332_BO1,204,203,200_.jpg", 
+              title: 'The Subtle Art of Not Giving A F#$k ', 
+              genre: 'Nonfiction', 
+              author: 'Mark Manson', 
+              price: '25.99',
+              date: '2016-09-13', 
+              publisher: 'Harper',
+              bookId: 2 },
+              {
+              img:"/images/Images/c5f6e7bc-c2d9-443b-bdb0-d32f6a7165c3.31cbb6f2cd45a1320e40874e64075b5c.webp", 
+              title: 'Twilight', 
+              genre: 'Romance', 
+              author: 'Stephanie Meyer', 
+              price: '10.99', 
+              date: '2005-10-05', 
+              publisher: 'Little, Brown and Company',
+              bookId: 3 },
+              { 
+              img:"/images/Images/71aG+xDKSYL._AC_UL210_SR195,210_.jpg", 
+              title: 'The 48 Laws of Power', 
+              genre: 'Nonfiction',  
+              author: 'Robert Greene', 
+              price: '13.99', 
+              date: '2000-09-01' , 
+              publisher: 'Peguin Books',
+              bookId: 4 },
+              {
+              img:"/images/Images/A1YhM3oRFbL._AC_UL210_SR195,210_.jpg", 
+              title: 'The Creative Act', 
+              genre: 'Nonfiction', 
+              author: 'Rick Rubin', 
+              price: '27.99', 
+              date: '2023-01-17' , 
+              publisher: 'Peguin Books',
+              bookId: 5 },
+              { 
+              img:"/images/Images/617uZq23IPL._AC_UL210_SR195,210_.jpg", 
+              title: 'Reminders of Him', 
+              genre: 'Romance', 
+              author: 'Collen Hoover', 
+              price: '9.99', 
+              date: '2022-01-18', 
+              publisher: 'Montlake',
+              bookId: 6 },
+              { 
+              img:"/images/Images/91Szm8FpdfL._AC_UL210_SR195,210_.jpg", 
+              title: 'Spare', 
+              genre: 'Nonfiction', 
+              author: 'Prince Harry The Duke of Sussex', 
+              price: '22.99', 
+              date: '2023-01-10', 
+              publisher: 'Random House',
+              bookId: 7 },
+              { 
+              img:"/images/Images/71N3-FFSDxL._AC._SR360,460.jpg", 
+              title: 'Sapiens', 
+              genre: 'Historical', 
+              author: 'Yuval Noah Harai', 
+              price: '21.99', 
+              date: '2015-02-10', 
+              publisher: 'Harper', 
+              bookId: 8 },
+              { 
+              img:"/images/Images/41ZLnc34EiL._AC_UL210_SR195,210_.jpg", 
+              title: 'Verity', 
+              genre: 'Thriller', 
+              author: 'Collen Hoover', 
+              price: '10.99', 
+              date:' 2021-10-26', 
+              publisher: 'Grand Central Publishing',
+              bookId: 9 },
+              { 
+              img:"/images/Images/51ECRZXoGyL._SY291_BO1,204,203,200_QL40_FMwebp_.webp", 
+              title: 'Fairy Tale', 
+              genre: 'Fiction', 
+              author: 'Stephan King', 
+              price: '16.99', 
+              date: '2022-09-02', 
+              publisher: 'Scribner',
+              bookId: 10 },
+              { 
+              img:"/images/Images/51U2Nh1UllL._SX218_BO1,204,203,200_QL40_FMwebp_.webp", 
+              title: 'The Mamba Mentality: How I Play', 
+              genre: 'Sports', 
+              author: 'Kobe Bryant', 
+              price: '15.99', 
+              date: '2018-10-23', 
+              publisher: 'MCD',
+              bookId:11 },
+              { 
+              img:"/images/Images/41lil+AWqZL._SY344_BO1,204,203,200_.jpg", 
+              title: 'Never Finished: Unshackle Your Mind Win the War Within',
+              genre: 'Sports', 
+              author: 'David Goggins', 
+              price: '18.99', 
+              date:' 2022-12-04', 
+              publisher: 'Lioncrest Publishing', 
+              bookId:12},
+              { 
+              img:"/images/Images/41l7sBlFYGL._SX330_BO1,204,203,200_.jpg", 
+              title: "The Things They Carried", 
+              genre: 'Historical', 
+              author: 'Tim OBrien', 
+              price: '13.99', 
+              date: '2009-01-01', 
+              publisher: 'Mariner',
+              bookId: 13 }
+  ]
+  let resultG = bookList.map(a => a.genre);
+  let uniqueG = [...new Set(resultG)];
+  let resultA = bookList.map(a => a.author);
+  let uniqueA = [...new Set(resultA)];
+  let resultP = bookList.map(a => a.publisher);
+  let uniqueP = [...new Set(resultP)];
+  
+  console.log(uniqueA);
+  const orderedAuthor = uniqueA.sort(function(a,b){
+    if(a.author != b.author){
+      return 1;
+    } else {
+      return -1;
+  }});
+  for(const order in orderedAuthor){
+          var filterSelect = document.getElementById("authors");
+            var options = document.createElement("option");
+            var filterText = document.createTextNode(orderedAuthor[order]);
+            options.appendChild(filterText);
+            filterSelect.appendChild(options);}
+            
+  const orderedGenre = uniqueG.sort(function(a,b){
+    if(a.genre != b.genre){
+      return 1;
+    } else {
+      return -1;
+    }
+    
+  });
+  for(const orderOne in orderedGenre){
+          var filterSelect = document.getElementById("genres"); 
+          var options = document.createElement("option");
+          var filterText = document.createTextNode(orderedGenre[orderOne]);
+          options.appendChild(filterText);
+          filterSelect.appendChild(options);}
+ 
+  
+  const orderedPublisher = uniqueP.sort(function(a,b){
+    if(a.publisher != b.publisher){
+      return 1;
+    } else {
+      return -1; 
+    }}); 
+   for(const orderTwo in orderedPublisher){
+          var filterSelect = document.getElementById("publishers");
+          var options = document.createElement("option");
+          var filterText = document.createTextNode(orderedPublisher[orderTwo]);
+          options.appendChild(filterText);
+          filterSelect.appendChild(options);}
+  
+  
+   function bookInput(e) {
+    const books = bookList;
+   document.getElementById("content").innerHTML = books.map((i) => 
+    `<div class="book" id="book${i.bookId}">
+              <div class="titles">${i.title}</div>
+              <div class="genres">${i.genre}</div>
+              <div class="authors">${i.author}</div>
+              <div class="publisher">${i.publisher}</div>
+             <div><img src="${i.img}"/></div>
+          </div>`
+      ).join(" ")}
+
+      // either wrap more functionality in it to work, or build out the filters and book data, 
+      // something that gives your book array and filter the array
+      // maybe nest a function, create a filter function pass in the filter data (if statments)
+      // if this = to this display, hide or do not show the rest
+      // filter out the filters (example make model year trim) 
+    </script> 
+    </main>
+    <footer>
+       <p>Contact Us at <a href="1-234-5678">1-234-5678</a></p>
+    </footer>
+</body>
+</html> 
